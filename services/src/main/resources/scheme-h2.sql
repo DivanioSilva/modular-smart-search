@@ -1,0 +1,8 @@
+CREATE TABLE cities(id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255), population INT);
+
+CREATE TABLE cars(id INT PRIMARY KEY AUTO_INCREMENT,
+    brand VARCHAR(255), fuelType VARCHAR(255), plate VARCHAR(255), numberOfDoors INT, buildYear INT, plateYear INT);
+
+CREATE TABLE persons(id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255), age INT);
