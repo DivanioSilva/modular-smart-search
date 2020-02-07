@@ -80,5 +80,6 @@
 	<modules>
 		<module>entities</module>
 		<module>services</module>
+		<module>controller</module>
 	</modules>
 </project>
