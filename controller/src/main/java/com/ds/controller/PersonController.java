@@ -19,7 +19,8 @@ public class PersonController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/byFindByRSQL/{query}")
     public List<Person> findPersonByQueryDSL(@PathVariable("query") String query){
-        return this.personService.smartSearchByRsql(query);
+        List<Person> personList = this.personService.smartSearchByRsql(query);
+        return personList;
     }
 
     @RequestMapping(method = RequestMethod.POST)
