@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "person/")
+@RequestMapping(path = "person")
 public class PersonController {
 
     @Autowired
@@ -17,7 +17,7 @@ public class PersonController {
     @Autowired
     private PersonRSQLRepository personRSQLRepository;
 
-    @RequestMapping(method = RequestMethod.GET, path = "byFindByRSQL/{query}")
+    @RequestMapping(method = RequestMethod.GET, path = "/byFindByRSQL/{query}")
     public List<Person> findPersonByQueryDSL(@PathVariable("query") String query){
         return this.personService.smartSearchByRsql(query);
     }
