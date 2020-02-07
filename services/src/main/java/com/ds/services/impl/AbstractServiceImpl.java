@@ -16,7 +16,7 @@ public class AbstractServiceImpl<T, R extends JpaSpecificationExecutor> {
         this.repository = repository;
     }
 
-    public List<T> smartSearch(String criteria) {
+    public List<T> smartSearchByRsql(String criteria) {
         Node rootNode = new RSQLParser().parse(criteria);
         Specification<T> spec = rootNode.accept(new CustomRsqlVisitor<>());
         List<T> results = this.repository.findAll(spec);

@@ -6,24 +6,26 @@ import com.ds.repositories.querydsl.CarQueryDSLRepository;
 import com.ds.repositories.querydsl.CityQueryDSLRepository;
 import com.ds.repositories.querydsl.PersonQueryDSLRepository;
 import com.ds.services.CarQueryDSLService;
+import com.ds.services.PersonService;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@SpringBootApplication
+import java.util.List;
+
+//@SpringBootApplication
 @EntityScan("com.ds.entities")
 public class DemoApplication implements CommandLineRunner {
 
-	@Value("${place.entities}")
-	protected String entitiesPlace;
+	//@Value("${place.entities}")
+	//protected String entitiesPlace;
 
 	@Autowired
 	private AppProperties appProperties;
@@ -34,15 +36,18 @@ public class DemoApplication implements CommandLineRunner {
 	private final CarQueryDSLRepository carQueryDSLRepository;
 	private final PersonQueryDSLRepository personQueryDSLRepository;
 	private final CarQueryDSLService carQueryDSLService;
+	private final PersonService personService;
 
 	public DemoApplication(CityQueryDSLRepository cityQueryDSLRepository,
 						   CarQueryDSLRepository carQueryDSLRepository,
 						   PersonQueryDSLRepository personQueryDSLRepository,
-						   CarQueryDSLService carQueryDSLService) {
+						   CarQueryDSLService carQueryDSLService,
+						   PersonService personService) {
 		this.cityQueryDSLRepository = cityQueryDSLRepository;
 		this.carQueryDSLRepository = carQueryDSLRepository;
 		this.personQueryDSLRepository = personQueryDSLRepository;
 		this.carQueryDSLService = carQueryDSLService;
+		this.personService = personService;
 	}
 
 	public static void main(String[] args) {
@@ -81,5 +86,9 @@ public class DemoApplication implements CommandLineRunner {
 		Iterable<Car> carsIt = carQueryDSLService.findCarSmartSearch("VW", "Gasolina", "", null, null, 2001);
 
 		logger.info("{}", carsIt);
+
+		List<Person> result2 = this.personService.smartSearchByRsql("name==Marianna");
+
+		logger.info("{}", result2);
 	}
 }

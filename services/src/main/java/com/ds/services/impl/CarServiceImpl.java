@@ -5,6 +5,8 @@ import com.ds.repositories.rsql.CarRSQLRepository;
 import com.ds.services.CarService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarServiceImpl extends AbstractServiceImpl implements CarService {
 
@@ -15,6 +17,12 @@ public class CarServiceImpl extends AbstractServiceImpl implements CarService {
         this.repository = repository;
     }
 
+
+    @Override
+    public List<Car> smartSearch(String criteria) {
+        // TODO: 07/02/2020 to be implemented 
+        return null;
+    }
 
     @Override
     public Car save(Car car) {
