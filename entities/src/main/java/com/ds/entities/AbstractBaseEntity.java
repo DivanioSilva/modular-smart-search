@@ -14,7 +14,7 @@ import javax.persistence.MappedSuperclass;
 @ToString
 @EqualsAndHashCode
 @MappedSuperclass
-public class AbstractBaseEntity {
+public abstract class AbstractBaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

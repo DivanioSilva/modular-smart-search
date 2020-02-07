@@ -1,5 +1,6 @@
 package com.ds;
 
+import com.ds.config.AppProperties;
 import com.ds.entities.*;
 import com.ds.repositories.querydsl.CarQueryDSLRepository;
 import com.ds.repositories.querydsl.CityQueryDSLRepository;
@@ -10,6 +11,7 @@ import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +24,9 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Value("${place.entities}")
 	protected String entitiesPlace;
+
+	@Autowired
+	private AppProperties appProperties;
 
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
